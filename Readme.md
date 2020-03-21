@@ -1,6 +1,6 @@
 # Angular Jumpstart
 
--- Learning note of Udemy course: [Angular - the complete guide] (https://www.udemy.com/course/the-complete-guide-to-angular-2)
+> Learning note of Udemy course: ![Angular - the complete guide](https://www.udemy.com/course/the-complete-guide-to-angular-2)
 
 ## Section 2: The Basics
 
@@ -8,7 +8,7 @@
 
 It is actually a class. In the code, it is a sub-folder inside `app` folder. It includes (`.ts`, `.html`, `css`) files. 
 
-Creat new component (Assignment 1, practicing components):
+Creat new component (**Assignment 1, practicing components**):
 1. manually creat it.
 2. use angular CLI: `ng generate component CompnentName` 
 
@@ -33,9 +33,11 @@ Use `[]` to bind property.
 
 ```
 <button 
-class="btn tn-primary" 
-[disabled]="!allowNewComponent" 
-(click)="onCreateServer()>Add Server</button>
+    class="btn tn-primary" 
+    [disabled]="!allowNewComponent" 
+    (click)="onCreateServer()>
+    Add Server
+</button>
 ```
 
 #### Two-way binding (property binding + event binding)
@@ -59,17 +61,17 @@ export class TurnGreenDirective {
 }
 ```
 
-#### `ngIf`, output data conditionally 
+#### `ngIf`: output data conditionally 
 ```
 <button class="btn btn-primary" (click)="showSecret = !showSecret">Display Details</button>
 <p *ngIf="showSecret">Secret Password = tuna</p>
 ```
 
-#### `ngStyle`, style elements dynamically
+#### `ngStyle`: style elements dynamically
 
-#### `ngClass`, apply CSS classes dynamically
+#### `ngClass`: apply CSS classes dynamically
 
-#### `ngFor`, output Lists
+#### `ngFor`: output Lists
 
 #### Assignment 2: Databinding
 
@@ -92,7 +94,7 @@ export class AppComponent {
   log = [];
 
   onToggleDetails() {
-    this.showSecret = !this.showSecret;
+    this.showSecret = !this.sshowSecret;
     this.log.push(new Date());
   }
 
@@ -100,6 +102,11 @@ export class AppComponent {
 ```
 
 ## Section 3: Course Project 1 - The Basics
+
+Generage new component, `recipes`, by CLI:
+```
+ng g c recipes --skipTests true
+```
 
 ## Section 6: Course Project 2 - Components & Databing
 
