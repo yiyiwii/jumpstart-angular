@@ -1,6 +1,6 @@
 # Angular Jumpstart
 
-> Learning note of Udemy course: ![Angular - the complete guide](https://www.udemy.com/course/the-complete-guide-to-angular-2)
+> Learning note of Udemy course: [Angular - the complete guide](https://www.udemy.com/course/the-complete-guide-to-angular-2)
 
 ## Section 2: The Basics
 
@@ -21,12 +21,39 @@ Component Decorator
 })
 ```
 
+#### Data Binding
+
+Data binding is a process that creates a connection between the application's UI and the data. It can be one-way (the change in the data model affects the view) or two-way (a change from the view also change the model).
+
+| Type                                                  | Syntax                                                                | Category                                |
+|-------------------------------------------------------|-----------------------------------------------------------------------|-----------------------------------------|
+| Interpolation, Property,<br>  Attribute, Class, Style | ``` {{expression}} [target]="expression" bind-target="expression" ``` | One-way from data source to view target |
+| Event                                                 | ``` (target)="statement" on-target="statement" ```                    | One-way from view target to data source |
+| Two-way                                               | ``` [(target)]="expression" bindon-target="expression" ```            | Two-way                                 |
+
+Angular supports:
+
+* Interpolation
+
+It uses `{{value}}` inside a UI element. The text between the braces (a template expression) is the name of a component property. 
+
+* Property binding 
+
+Used to bind values to the DOM properties of the HTML elements. Are evaluated on every browser event and any changes made to the objects in the event are applied to the properties. 
+
+* Event binding 
+
+* Two-way binding
+
+
 #### Property Binding vs String Interpolation
 
-Use `[]` to bind property. 
 ```
 <button class="btn tn-primary" [disabled]="!allowNewComponent">Add Server</button>
 <p [innerText]="allowNewServer"></p>
+
+src="{{ recipe.imagePath }}"
+[src]="recipe.imagePath"
 ```
 
 #### Event Binding
@@ -35,7 +62,7 @@ Use `[]` to bind property.
 <button 
     class="btn tn-primary" 
     [disabled]="!allowNewComponent" 
-    (click)="onCreateServer()>
+    (click)="onCreateServer()">
     Add Server
 </button>
 ```
@@ -76,6 +103,17 @@ export class TurnGreenDirective {
 #### Assignment 2: Databinding
 
 ```
+<input type="text" class="form-control" [(ngModel)]="username">
+<p>{{ username }}</p>
+<button
+  class="btn btn-primary"
+  [disabled]="username === ''"
+  (click)="username = ''">Reset User</button>
+```
+
+#### Assignment 3: Practicing Directives
+
+```
 <!-- app.component.html-->
       <button class="btn btn-primary" (click)="onToggleDetails()">Display Details</button>
       <p *ngIf="showSecret">Secret Password = tuna</p>
@@ -94,7 +132,7 @@ export class AppComponent {
   log = [];
 
   onToggleDetails() {
-    this.showSecret = !this.sshowSecret;
+    this.showSecret = !this.showSecret;
     this.log.push(new Date());
   }
 
@@ -107,6 +145,36 @@ Generage new component, `recipes`, by CLI:
 ```
 ng g c recipes --skipTests true
 ```
+
+#### Add a model 
+
+```
+export class Ingredient {
+  public name: string;
+  public amount: number;
+
+  constructor(name: string, amout: number) {
+    this.name = name;
+    this.amount = amout;
+  }
+}
+
+// equal to 
+
+export class Ingredient {
+    constructor(public name: string, public amount: number) {}
+}
+```
+
+## Section 5: Components & Databinding Deep Dive
+
+* HTML Elements: native properties & events
+* Directives: custom properties & events
+* Component: custom properties & events
+
+#### View Encapsulation
+
+
 
 ## Section 6: Course Project 2 - Components & Databing
 
