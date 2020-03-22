@@ -33,13 +33,9 @@ Data binding is a process that creates a connection between the application's UI
 
 Angular supports:
 
-* Interpolation
+* Interpolation: it uses `{{value}}` inside a UI element. The text between the braces (a template expression) is the name of a component property. 
 
-It uses `{{value}}` inside a UI element. The text between the braces (a template expression) is the name of a component property. 
-
-* Property binding 
-
-Used to bind values to the DOM properties of the HTML elements. Are evaluated on every browser event and any changes made to the objects in the event are applied to the properties. 
+* Property binding: used to bind values to the DOM properties of the HTML elements. Are evaluated on every browser event and any changes made to the objects in the event are applied to the properties. 
 
 * Event binding 
 
@@ -174,9 +170,83 @@ export class Ingredient {
 
 #### View Encapsulation
 
+To learn: shadown DOM
+
+```
+@Component({
+  ...,
+  encapsulation: ViewEncapsulation.Emulated // None, Native, ShadowDom
+})
+```
+
+#### use local references in templates
+
+We can declare a reference variable by using hash symble (`#`). Then we can access the variable anythere only inside the template (`.html`).
+
+```
+<input type="text" #firstNameInput>
+<button (click)="show(lastNameInput)">Show</button>
+```
+
+#### `ViewChild` decorator
+
+It a property decorator which configures a view query. With `@ViewChild`, we can inject any component or directive (or HTML element) present on the template of a given component onto the component itself.
+
+#### Getting access to the template & DOM with `@ViewChild`
+```
+export class ServerElementComponent {
+  ...
+    @ViewChild('heading', {static: true}) header: ElementRef;
+}
+```
+
+#### `ng-content` to project content into Component
+
+#### Component Lifecycle
+
+* `ngOnChanges`: called after a bound input property changes
+* `ngOnInit`: called once the component is initialized
+* `ngDoCheck`: called during every change detection run
+* `ngAfterContentInit`: called after content (ng-content) has been projected into view
+* `ngAfterContentChecked`: called every time the projected content has been checked
+* `ngAfterViewInit`: called after the component's view (and child views) has been initialized
+* `ngAfterViewChecked`: called every time the view (and the child views) have been checked
+* `ngOnDestroy`: called once the component is about to be destroyed
+
+#### Getting access to `ng-content` with `@ContentChild()` 
+
+#### Assignment 4: practicing property & event binding and view encapsulation
 
 
 ## Section 6: Course Project 2 - Components & Databing
+
+* Adding navigation with event binding and `ngIf`
+
+* Passing recipe data with property binding
+
+* Passing data with event and property binding (combined)
+
+* Allowing the user to add ingredients to the shopping list
+
+## Section 7: Directives Deep Dive
+
+#### `ngFor` and `ngIf` recap
+
+#### `ngClass` and `ngStyle` recap
+
+#### Attribute directive
+
+#### the Renderer
+
+#### HostListener to listen to host events
+
+#### HostBinding to bind to host properties
+
+#### Binding to directive properties
+
+#### Build a structural directive
+
+#### `ngSwitch`
 
 ## Section 8: Course Project 3 - Directives
 
