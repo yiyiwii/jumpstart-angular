@@ -338,6 +338,10 @@ Refactor the code using `observable`.
 
 ## Section 16: Course Project 7 - Forms
 
+Using `Forms` for the edit button. 
+
+To make sure the amount valid, use the pattern matching: `pattern="^[1-9]+[0-9]*$"`
+
 ## Section 17: Using Pipes to Transform Output
 
 ## Section 18: Making Http Requests
