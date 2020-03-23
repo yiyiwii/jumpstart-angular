@@ -96,7 +96,7 @@ export class TurnGreenDirective {
 
 #### `ngFor`: output Lists
 
-#### Assignment 2: Databinding
+#### Assignment 2 (section 2): Databinding
 
 ```
 <input type="text" class="form-control" [(ngModel)]="username">
@@ -107,7 +107,7 @@ export class TurnGreenDirective {
   (click)="username = ''">Reset User</button>
 ```
 
-#### Assignment 3: Practicing Directives
+#### Assignment 3 (section 2): Practicing Directives
 
 ```
 <!-- app.component.html-->
@@ -215,7 +215,7 @@ export class ServerElementComponent {
 
 #### Getting access to `ng-content` with `@ContentChild()` 
 
-#### Assignment 4: practicing property & event binding and view encapsulation
+#### Assignment 4 (section 5): practicing property & event binding and view encapsulation
 
 
 ## Section 6: Course Project 2 - Components & Databing
@@ -229,12 +229,64 @@ export class ServerElementComponent {
 * Allowing the user to add ingredients to the shopping list
 
 ## Section 7: Directives Deep Dive
+> Directives: Custom attributes that enhance HTML syntax and are used to attach behaviors to specific elements on the page.
 
 #### `ngFor` and `ngIf` recap
 
+The `ngIf` directive is used to insert/remove/show an element according to the true/false condition. The `ngFor` is used to display each item in a list.
+
+```
+// in .html file
+<div *ngIf="onlyOdd">
+  <li
+    class="list-group-item"
+    [ngClass]="{odd: odd % 2 !== 0}"
+    ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'yellow' : 'transparent'}"
+    *ngFor="let odd of oddNumbers">
+  {{ odd }}
+  </li>
+</div>
+
+// in .ts file
+export class AppComponent {
+  oddNumbers = [1, 3, 5];
+  onlyOdd = false;
+}
+
+```
+
 #### `ngClass` and `ngStyle` recap
 
+The `ngStyle` is used to set a given DOM element style properties. For example:
+```
+<div [ngStyle]="{'background-color':'green'}"></<div>
+```
+The `ngClass` is used to set the CSS class dynamically for a DOM element.
+
+```
+<li
+  class="list-group-item"
+  ngClass]="{odd: even % 2 !== 0}"
+  [ngStyle]="{backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent'}"
+  *ngFor="let even of evenNumbers">
+    {{ even }}
+</li>
+```
+
 #### Attribute directive
+
+Create a basic attribute directive by: `ng g d basic-highlight`. 
+
+```
+import { Directive, OnInit} from '@angular/core';
+
+@Directive({
+  selector: '[appBasicHighlight]'
+})
+export class BasicHighlightDirective implements OnInit {
+...
+}
+```
 
 #### the Renderer
 
@@ -250,13 +302,45 @@ export class ServerElementComponent {
 
 ## Section 8: Course Project 3 - Directives
 
+Add a dropdown directive typescript file and update the dropdown buttons.
+
+## Section 9: Using Services & Dependency Injection
+
+Services are to provide common functionalities to various modules. 
+
+#### Assignment 5 (section 9): practicing services
+
 ## Section 10: Course Project 4 - Services & Dependency Injection
+
+Add a recipe service which combines some functions and hinds the data. Use `@Injectable()` in `recipe.service.ts`. That is, `RecipeService` is an injeactable service, while the `ShoppingListService` is the dependency.
+
+## Section 11: Changing Pages with Routing 
 
 ## Section 12: Course Project 5 - Routing
 
+## Section 13: Understanding Observables 
+
+Angular Observable use as an interface to handle a variety of common asynchronous operations. For example, to send observable data from child to parent component by defining custom events, handle AJAX or HTTP requests and responses, listen and respond user input in Angular Router and Forms. 
+
+> Observables are declarative—that is, you define a function for publishing values, but it is not executed until a consumer subscribes to it. The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
+
+> RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using observables that makes it easier to compose asynchronous or callback-based code.
+
+Reference: 
+1. [Link djamware](https://www.djamware.com/post/5da31946ae418d042e1aef1d/angular-8-tutorial-observable-and-rxjs-examples)
+2. [Link Angular Doc](https://angular.io/guide/observables)
+
 ## Section 14: Course Project 6 - Observables
 
+Refactor the code using `observable`.
+
+## Section 15: Handling Forms in Angular Apps
+
 ## Section 16: Course Project 7 - Forms
+
+## Section 17: Using Pipes to Transform Output
+
+## Section 18: Making Http Requests
 
 ## Section 19: Course Project 8 - Http
 
